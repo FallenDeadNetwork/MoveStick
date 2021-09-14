@@ -5,7 +5,8 @@ namespace rark\movestick;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
+use pocketmine\Server;
 
 class MoveStickCommand extends Command{
 
@@ -14,13 +15,15 @@ class MoveStickCommand extends Command{
 	}
 
 	public function execute(CommandSender $sender, string $label, array $args){
+		$name = $sender->getName();
+
 		if(!$sender instanceof Player){
 			$sender->sendMessage('ゲーム内で実行してください');
 			return;
 		}
 		$movestick = Main::getMoveStick();
 
-		if(!$sender->isOp() or !$sender->getInventory()->canAddItem($movestick)) return;
+		if(!Server::getInstance()->isOp($name) or !$sender->getInventory()->canAddItem($movestick)) return;
 		$sender->getInventory()->addItem($movestick);
 	}
 }

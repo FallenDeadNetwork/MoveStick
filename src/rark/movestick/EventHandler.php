@@ -6,13 +6,14 @@ namespace rark\movestick;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\Server;
 
 class EventHandler implements Listener{
 
 	public function onInteract(PlayerInteractEvent $ev):void{
 		$player = $ev->getPlayer();
 
-		if(!$player->isOp()) return;
+		if(!Server::getInstance()->isOp($player->getName())) return;
 		if(!$ev->getItem()->equals(Main::getMoveStick())) return;
 		AddMotionTask::isJoined($player)? AddMotionTask::quit($player): AddMotionTask::join($player);
 	}
