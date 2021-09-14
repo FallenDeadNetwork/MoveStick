@@ -12,10 +12,11 @@ class Main extends PluginBase{
 
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents(new EventHandler, $this);
-		self::$movestick = Item::get(166, mt_rand(0x00f, 0xfff));
+		self::$movestick = Item::get(Item::FISHING_ROD, 102);
 		self::$movestick->setCustomName('§cMoveStick');
 		Item::addCreativeItem(self::$movestick);
-		$this->getScheduler()->scheduleRepeatingTask(new AddMotionTask, 10);
+		$this->getScheduler()->scheduleRepeatingTask(new AddMotionTask, 1);
+		$this->getServer()->getCommandMap()->register($this->getName(), new MoveStickCommand);
 	}
 	
 	public function onDisable(){

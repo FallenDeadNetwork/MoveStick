@@ -20,7 +20,7 @@ class MoveStickCommand extends Command{
 		}
 		$movestick = Main::getMoveStick();
 
-		if(!$sender->isOp or !$sender->getInventory()->canAddItem($movestick)) return;
+		if(!$sender->isOp() or !$sender->getInventory()->canAddItem($movestick)) return;
 		$sender->getInventory()->addItem($movestick);
 	}
 }

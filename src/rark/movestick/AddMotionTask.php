@@ -29,7 +29,7 @@ class AddMotionTask extends Task{
 		/** @var Player $player */
 		foreach(self::$targets as $player){
 			if(!$player instanceof Player) return; //リフレクション対策
-			$player->setMotion($player->getDirectionVector()->divide(2.5));
+			$player->setMotion($player->getMotion()->multiply(2.3));
 		}
 	}
 }
