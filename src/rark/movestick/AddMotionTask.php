@@ -6,7 +6,7 @@ namespace rark\movestick;
 use pocketmine\Player;
 use pocketmine\scheduler\Task;
 
-class AddMotionTack extends Task{
+class AddMotionTask extends Task{
 	/** @var Player[string] */
 	protected static array $targets = [];
 

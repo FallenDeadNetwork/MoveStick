@@ -14,12 +14,12 @@ class EventHandler implements Listener{
 
 		if(!$player->isOp()) return;
 		if(!$ev->getItem()->equals(Main::getMoveStick())) return;
-		AddMotionTack::isJoined($player)? AddMotionTack::quit($player): AddMotionTack::join($player);
+		AddMotionTask::isJoined($player)? AddMotionTask::quit($player): AddMotionTask::join($player);
 	}
 
 	public function onQuit(PlayerQuitEvent $ev):void{
 		$player = $ev->getPlayer();
-		
-		if(AddMotionTack::isJoined($player)) AddMotionTack::quit($player);
+
+		if(AddMotionTask::isJoined($player)) AddMotionTask::quit($player);
 	}
 }
