@@ -13,7 +13,7 @@ class Main extends PluginBase{
 
 	protected function onEnable():void{
 		$this->getServer()->getPluginManager()->registerEvents(new EventHandler, $this);
-		self::$movestick = ItemFactory::getInstance()->get(166, 102);
+		self::$movestick = ItemFactory::getInstance()->get(166, 7);
 		self::$movestick->setCustomName('§cMoveStick');
 		$this->getScheduler()->scheduleRepeatingTask(new AddMotionTask, 1);
 		$this->getServer()->getCommandMap()->register($this->getName(), new MoveStickCommand);
